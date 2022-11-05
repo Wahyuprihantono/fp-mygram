@@ -16,8 +16,8 @@ const (
 	DB_HOST = "localhost"
 	DB_PORT = "5432"
 	DB_USER = "postgres"
-	DB_PASS = ""
-	DB_NAME = "postgres"
+	DB_PASS = "postgres"
+	DB_NAME = "mygram"
 )
 
 func StartDB() *gorm.DB {
@@ -39,11 +39,7 @@ func StartDB() *gorm.DB {
 }
 
 func autoMigrate(db *gorm.DB) error {
-	if err := db.AutoMigrate(&models.User{}); err != nil {
-		return err
-	}
-
-	if err := db.AutoMigrate(&models.SocialMedia{}); err != nil {
+	if err := db.AutoMigrate(&models.User{}, &models.SocialMedia{}, &models.Photo{}, &models.Comment{}); err != nil {
 		return err
 	}
 
