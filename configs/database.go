@@ -24,7 +24,7 @@ func StartDB() *gorm.DB {
 	dbPass := os.Getenv("DB_PASS")
 	dbHost := os.Getenv("DB_HOST")
 	dbName := os.Getenv("DB_NAME")
-	dbPort := os.Getenv("DB_PORT")
+	dbPort := os.Getenv("PORT")
 
 	dataSourceName := fmt.Sprintf(
 		"host=%v user=%v password=%v dbname=%v port=%v TimeZone=Asia/Jakarta", dbHost, dbUser, dbPass, dbName, dbPort)

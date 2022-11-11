@@ -7,7 +7,7 @@ import (
 )
 
 func main() {
-	port := os.Getenv("DB_PORT")
+	port := os.Getenv("PORT")
 	db := configs.StartDB()
 
 	router := routers.StartServer(db)
