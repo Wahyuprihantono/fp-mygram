@@ -3,28 +3,31 @@ package configs
 import (
 	"fmt"
 	"log"
+	"os"
 	"project2-golang/helpers"
 	"project2-golang/models"
 
-	_ "github.com/lib/pq"
+	"github.com/joho/godotenv"
 
 	"gorm.io/driver/postgres"
 	"gorm.io/gorm"
 )
 
-const (
-	DB_HOST = "localhost"
-	DB_PORT = "5432"
-	DB_USER = "postgres"
-	DB_PASS = "postgres"
-	DB_NAME = "mygram"
-)
-
 func StartDB() *gorm.DB {
+	if os.Getenv("APP_NEW") != "production" {
+		err := godotenv.Load(".env")
+		if err != nil {
+			panic(err)
+		}
+	}
+	dbUser := os.Getenv("DB_USER")
+	dbPass := os.Getenv("DB_PASS")
+	dbHost := os.Getenv("DB_HOST")
+	dbName := os.Getenv("DB_NAME")
+	dbPort := os.Getenv("DB_PORT")
+
 	dataSourceName := fmt.Sprintf(
-		"host=%s user=%s password=%s dbname=%s port=%s  sslmode=disable",
-		DB_HOST, DB_USER, DB_PASS, DB_NAME, DB_PORT,
-	)
+		"host=%v user=%v password=%v dbname=%v port=%v TimeZone=Asia/Jakarta", dbHost, dbUser, dbPass, dbName, dbPort)
 
 	db, err := gorm.Open(postgres.Open(dataSourceName), &gorm.Config{})
 
