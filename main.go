@@ -6,10 +6,10 @@ import (
 )
 
 func main() {
-	PORT := ":3000"
+	port := os.Getenv("PORT")
 	db := configs.StartDB()
 
 	router := routers.StartServer(db)
 
-	router.Run(PORT)
+	router.Run(":"+PORT)
 }
