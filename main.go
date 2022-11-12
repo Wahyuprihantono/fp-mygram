@@ -11,6 +11,5 @@ func main() {
 	db := configs.StartDB()
 
 	router := routers.StartServer(db)
-
 	router.Run(":" + port)
 }
