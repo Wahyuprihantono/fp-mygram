@@ -1,5 +1,5 @@
 # Final Project 2 Kampus Merdeka - Hacktiv8 
-Aplikasi CRUD bernama MyGram, aplikasi ini dapat menyimpan foto maupun membuat comement untuk foto orang lain. 
+Aplikasi CRUD bernama MyGram, aplikasi ini terdiri dari 4 tabel yaitu tabel User, Sosial Media, Photo, dan Comment. semua tabel tersebut saling terhubung dengan tabel User. Apabila ingin menambah data Sosial Media, Photo dan Comment harus melalui proses Autentikasi menggunak JsonWebToken. 
 
 # Group 1
   1. Maulidta Naflah Herdiyanti 
